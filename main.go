@@ -9,5 +9,5 @@ type Recipient struct{
 
 
 func main(){
-
+loadRecipient("emails.csv")
 }
