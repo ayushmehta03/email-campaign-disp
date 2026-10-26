@@ -7,7 +7,7 @@ import (
 )
 
 
-func loadRecipient(filePath string)error{
+func loadRecipient(filePath string, ch chan Recipient)error{
 	f,err:=os.Open(filePath)
 	if err!=nil{
 		return err
@@ -19,12 +19,21 @@ func loadRecipient(filePath string)error{
 		return err;
 
 	}
+		defer f.Close()
+
 	for _,record:=range records[1:]{
 		fmt.Println(record)
 
-		// send-> consumer
-		
+		//unbuffered channel
+
+		ch<-Recipient{
+			Name: record[0],
+			Email: record[1],
+		}
+
+
 	}
+
 
 	return  nil
 
