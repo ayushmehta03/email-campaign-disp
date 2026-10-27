@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/smtp"
 	"sync"
+	"time"
 )
 
 func emailWorker(id int,ch chan Recipient,wg *sync.WaitGroup){
@@ -24,6 +25,7 @@ func emailWorker(id int,ch chan Recipient,wg *sync.WaitGroup){
 		if err!=nil{
 			log.Fatal(err)
 		}
+		time.Sleep(50*time.Millisecond)
 
 		
 
