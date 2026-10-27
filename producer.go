@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/csv"
-	"fmt"
 	"os"
 )
 
@@ -22,7 +21,6 @@ func loadRecipient(filePath string, ch chan Recipient)error{
 		defer f.Close()
 
 	for _,record:=range records[1:]{
-		fmt.Println(record)
 
 		//unbuffered channel
 
