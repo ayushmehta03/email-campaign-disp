@@ -2,7 +2,6 @@ package main
 
 import (
 	"sync"
-	"time"
 )
 
 
@@ -28,9 +27,11 @@ func main(){
 
 	workerCnt:=5
 	for i:=1; i<=workerCnt;i++{
+	wg.Add(1)
 	go emailWorker(i,recipientChannel,&wg)
 
 	}
 
-	time.Sleep(3*time.Second)
+	wg.Wait()
+
 }
