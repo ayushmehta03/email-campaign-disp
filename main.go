@@ -11,7 +11,12 @@ type Recipient struct{
 func main(){
 
 	recipientChannel:=make(chan Recipient)
+	go emailWorker(1,recipientChannel)
+
+	go func(){
+		loadRecipient("./emails.csv",recipientChannel)
 
 
-loadRecipient("./emails.csv",recipientChannel)
+	}()
+
 }
